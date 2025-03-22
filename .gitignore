@@ -1,0 +1,26 @@
+# Ignorar las dependencias de Composer (esto no se necesita subir a GitHub)
+vendor/
+
+# Ignorar las dependencias de Node.js (si estás usando NPM o Yarn)
+node_modules/
+
+# Ignorar el archivo de configuración del entorno (contiene variables sensibles como claves de API y base de datos)
+.env
+
+# Ignorar los archivos de logs (si tu app genera logs)
+storage/*.log
+
+# Ignorar caché y archivos generados en storage
+storage/framework/*
+storage/*.key
+
+# Ignorar los archivos generados por IDEs como PHPStorm o Visual Studio Code
+.idea/
+.vscode/
+
+# Ignorar la carpeta public/hot para Laravel Mix
+public/hot
+
+# Ignorar la carpeta de configuraciones temporales
+/.env.*
+
