@@ -126,11 +126,11 @@
 </head>
 <body>
 
-    <a href="{{ route('datos') }}">
+    <a href="{{ route('suministros.index') }}">
         <button class="boton-datos">Ir a Datos</button>
     </a>
 
-    <a href="{{ route('admin') }}">
+    <a href="{{ route('usuarios.index') }}">
         <button class="boton-admin">Casas Registradas</button>
     </a>
 
@@ -142,13 +142,19 @@
             Enciende o apaga el suministro de agua
         </div>
     </div>
-
     <script>
-        function cambiarEstado() {
+    // Comprobar el estado de la bomba al cargar la página
+    window.onload = function() {
+        obtenerEstado();
+    };
+
+    function obtenerEstado() {
+        fetch("{{ route('api.control.bomba.estado') }}") // Suponiendo que tienes una ruta que devuelve el estado actual
+        .then(response => response.json())
+        .then(data => {
             var boton = document.getElementById('boton');
             var texto = boton.querySelector('span');
-
-            if (boton.classList.contains('apagado')) {
+            if (data.estado === 'on') {
                 boton.classList.remove('apagado');
                 boton.classList.add('prendido');
                 texto.textContent = 'Prendido';
@@ -157,8 +163,45 @@
                 boton.classList.add('apagado');
                 texto.textContent = 'Apagado';
             }
-        }
-    </script>
+        })
+        .catch(error => console.error("Error al obtener el estado:", error));
+    }
+
+    // Cambiar el estado de la bomba
+    function cambiarEstado() {
+        var boton = document.getElementById('boton');
+        var texto = boton.querySelector('span');
+        var estado = boton.classList.contains('apagado') ? 'on' : 'off';
+
+        fetch("{{ route('api.control.bomba') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({ estado: estado })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (estado === "on") {
+                    boton.classList.remove('apagado');
+                    boton.classList.add('prendido');
+                    texto.textContent = 'Prendido';
+                } else {
+                    boton.classList.remove('prendido');
+                    boton.classList.add('apagado');
+                    texto.textContent = 'Apagado';
+                }
+            } else {
+                alert("Error al enviar la señal.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+</script>
+
+
 
 </body>
 </html>

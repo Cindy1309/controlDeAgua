@@ -27,7 +27,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Si el correo es el específico, redirigir a la página de administración
             if (Auth::user()->email == 'correo@example.com') {
-                return redirect()->route('control.admin'); // Redirige a la vista del administrador
+                return redirect()->route('control.adminUsuario'); // Redirige a la vista del administrador
             }
 
             // Redirigir al índice después de un login exitoso

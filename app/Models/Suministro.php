@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Suministro extends Model
+use MongoDB\Laravel\Eloquent\Model as Eloquent;
+
+class Suministro extends Eloquent
 {
-    /** @use HasFactory<\Database\Factories\SuministroFactory> */
-    use HasFactory;
+    protected $connection = 'mongodb';
+    protected $collection = 'suministros';
 }
