@@ -47,6 +47,9 @@
             background-color: #007bff;
             color: white;
         }
+        table td {
+            color: black; /* Cambié el color del texto a negro */
+        }
 
         /* Estilo del botón fuera del contenedor */
         .boton-regresar {
