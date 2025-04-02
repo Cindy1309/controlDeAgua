@@ -8,30 +8,54 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // Para obtener todos los usuarios (GET)
+    
     public function index()
     {
-        // Retorna todos los usuarios
+    
         return response()->json(User::all(), 200);
     }
 
-    // Para crear un nuevo usuario (POST)
+   
     public function store(Request $request)
     {
-        // Validación
+       
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
         ]);
 
-        // Crear un nuevo usuario
+      
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Encriptar la contraseña
+            'password' => bcrypt($request->password), 
         ]);
 
-        return response()->json($user, 201); // Devuelve el usuario creado
+        return response()->json($user, 201); 
     }
+   
+   
+    public function login(Request $request)
+{
+    
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        
+        return response()->json([
+            'message' => 'Login successful.',
+            'user' => Auth::user()
+        ], 200);
+    }
+
+   
+    return response()->json(['error' => 'Invalid credentials.'], 401);
 }
+}
+
+

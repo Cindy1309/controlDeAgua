@@ -27,14 +27,14 @@
         border-radius: 12px;
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         position: relative;
-        width: 60%; /* Aumenté el ancho */
-        max-width: 700px; /* Max ancho más grande */
+        width: 60%; 
+        max-width: 700px; 
     }
 
     .boton {
-        padding: 25px 60px; /* Aumenté el padding */
-        font-size: 32px; /* Aumenté el tamaño de fuente */
-        font-weight: 700; /* Aumenté el peso de la fuente */
+        padding: 25px 60px; 
+        font-size: 32px;
+        font-weight: 700; 
         color: #fff;
         border: none;
         border-radius: 50px;
@@ -67,32 +67,32 @@
     }
 
     .boton span {
-        font-size: 24px; /* Aumenté el tamaño de las letras dentro del botón */
-        font-weight: 600; /* Aumenté el peso de la fuente */
+        font-size: 24px; 
+        font-weight: 600; 
         text-transform: uppercase;
     }
 
     .leyenda {
         margin-top: 30px;
-        font-size: 22px; /* Aumenté el tamaño de la fuente */
+        font-size: 22px; 
         font-weight: 500;
         color: black;
     }
 
-    /* Botones en las esquinas con nuevo estilo */
+    
     .boton-datos {
         position: absolute;
         top: 20px;
         left: 20px;
-        font-size: 22px; /* Aumenté el tamaño del texto */
-        background-color: #007bff; /* Azul */
+        font-size: 22px; 
+        background-color: #007bff; 
         color: #fff;
-        padding: 16px 30px; /* Aumenté el padding */
+        padding: 16px 30px; 
         border-radius: 30px;
         text-align: center;
         box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.3);
         transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        border: none; /* Eliminado el borde negro */
+        border: none; 
     }
 
     .boton-datos:hover {
@@ -105,15 +105,15 @@
         position: absolute;
         top: 20px;
         right: 20px;
-        font-size: 22px; /* Aumenté el tamaño del texto */
-        background-color: #007bff; /* Azul */
+        font-size: 22px; 
+        background-color: #007bff; 
         color: #fff;
-        padding: 16px 30px; /* Aumenté el padding */
+        padding: 16px 30px; 
         border-radius: 30px;
         text-align: center;
         box-shadow: 0px 6px 10px rgba(0, 123, 255, 0.3);
         transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        border: none; /* Eliminado el borde negro */
+        border: none; 
     }
 
     .boton-admin:hover {
@@ -143,13 +143,13 @@
         </div>
     </div>
     <script>
-    // Comprobar el estado de la bomba al cargar la página
+   
     window.onload = function() {
         obtenerEstado();
     };
 
     function obtenerEstado() {
-        fetch("{{ route('api.control.bomba.estado') }}") // Suponiendo que tienes una ruta que devuelve el estado actual
+        fetch("{{ route('api.control.bomba.estado') }}") 
         .then(response => response.json())
         .then(data => {
             var boton = document.getElementById('boton');
@@ -167,7 +167,7 @@
         .catch(error => console.error("Error al obtener el estado:", error));
     }
 
-    // Cambiar el estado de la bomba
+    
     function cambiarEstado() {
         var boton = document.getElementById('boton');
         var texto = boton.querySelector('span');

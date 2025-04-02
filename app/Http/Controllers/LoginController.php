@@ -8,40 +8,40 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    // Mostrar el formulario de login
+    
     public function showLoginForm()
     {
-        return view('control.login'); // Muestra la vista login
+        return view('control.login'); 
     }
 
-    // Procesar el login
+    
     public function login(Request $request)
     {
-        // Validar los datos
+       
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Intentar autenticar al usuario
+       
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Si el correo es el específico, redirigir a la página de administración
+          
             if (Auth::user()->email == 'correo@example.com') {
-                return redirect()->route('control.adminUsuario'); // Redirige a la vista del administrador
+                return redirect()->route('control.adminUsuario'); 
             }
 
-            // Redirigir al índice después de un login exitoso
-            return redirect()->route('control.index'); // Redirige a la vista index
+           
+            return redirect()->route('control.index'); 
         }
 
-        // Si el login falla
+        
         return back()->withErrors(['email' => 'Las credenciales no son correctas.']);
     }
 
-    // Método para cerrar sesión
+    
     public function logout()
     {
-        Auth::logout(); // Cierra la sesión
-        return redirect()->route('control.login.form'); // Redirige al formulario de login
+        Auth::logout(); 
+        return redirect()->route('control.login.form'); 
     }
 }

@@ -44,9 +44,10 @@ Route::get('/admin/datos', [DatosController::class, 'vistaAdmin'])->name('contro
 
 // Rutas para editar, actualizar y eliminar casas (comunes para todos los usuarios)
 Route::get('/admin-usuarios', [UsuarioController::class, 'index'])->name('control.adminUsuario');
-Route::delete('/usuarios/{id}', [UsuarioController::class, 'destroyAdmin'])->name('usuarios.destroyAdmin');
+Route::delete('/usuarios/{id}', [UsuarioController::class, 'destroy'])->name('usuarios.destroyAdmin');
 Route::get('/usuarios/{id}/edit', [UsuarioController::class, 'edit'])->name('usuarios.editAdmin');
 Route::get('/botonAdmin', [UsuarioController::class, 'botonAdmin'])->name('botonAdmin');
+
 
 
 
@@ -63,7 +64,7 @@ Route::get('/admin/usuarios', [UsuarioController::class, 'index'])->name('adminU
 
 // Ruta para editar una casa
 
-Route::get('/casas/{id}/edit', [IndexController::class, 'edit'])->name('casas.edit');
+Route::get('casas/{id}/edit', [IndexController::class, 'edit'])->name('casas.edit');
 Route::put('/casas/{id}', [IndexController::class, 'update'])->name('casas.update');
 Route::delete('/casas/{id}', [IndexController::class, 'destroy'])->name('casas.destroy');
 
@@ -76,4 +77,3 @@ Route::prefix('bomba')->group(function () {
 
 Route::get('/suministros', [SuministroController::class, 'index'])->name('suministros.index');
 Route::get('/suministros/datos', [SuministroController::class, 'datos'])->name('suministros.datos');
-Route::get('/suministrosTotales', [SuministroController::class, 'suministro'])->name('suministros');

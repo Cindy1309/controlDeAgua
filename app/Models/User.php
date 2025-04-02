@@ -28,7 +28,7 @@ class User extends Eloquent implements AuthenticatableContract
 
     public function casas()
     {
-        return $this->embedsMany(Casas::class);  // Aquí defines la relación de "uno a muchos"
+        return $this->embedsMany(Casas::class);  
     }
 }
 

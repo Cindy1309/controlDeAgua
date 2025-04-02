@@ -7,7 +7,7 @@ use MongoDB\Laravel\Eloquent\Model as Eloquent;
 class Casas extends Eloquent
 {
     protected $connection = 'mongodb';
-    protected $collection = 'casas'; // Esta colección ya no es necesaria, pero puedes mantenerla para referencia
+    protected $collection = 'casas'; 
 
     protected $fillable = [
         'calle',
@@ -17,7 +17,7 @@ class Casas extends Eloquent
         'litros_asignados',
     ];
 
-    // La lógica del almacenamiento y los litros asignados permanece igual
+    
     public static $almacenamientoPermitido = ['Tinaco'];
 
     public static function boot()

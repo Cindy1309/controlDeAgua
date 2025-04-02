@@ -6,7 +6,7 @@
     <title>Bienvenida - OCNAgua</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Estilo general del cuerpo */
+        
         body {
             font-family: Arial, sans-serif;
             background: url('{{ asset('images/6.webp') }}') no-repeat center center fixed;
@@ -19,7 +19,7 @@
             box-sizing: border-box;
         }
 
-        /* Contenedor principal */
+        
         .container {
             background: white;
             padding: 40px;
@@ -31,20 +31,20 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* Logo */
+        
         .logo {
             width: 250px;
             margin-bottom: 20px;
         }
 
-        /* Título */
+        
         h1 {
             font-size: 2.5em;
             color: #004d99;
             margin-bottom: 20px;
         }
 
-        /* Descripción */
+        
         p {
             font-size: 1.2em;
             color: #666;
@@ -52,7 +52,7 @@
             margin-bottom: 30px;
         }
 
-        /* Botón */
+       
         button {
             background-color: #004d99;
             color: white;
@@ -64,12 +64,12 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Efecto al pasar el mouse por el botón */
+      
         button:hover {
             background-color: #003366;
         }
 
-        /* Animación de aparición */
+       
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -81,7 +81,7 @@
             }
         }
 
-        /* Estilo para el botón de "Inicia Sesión" en la parte superior derecha */
+       
         .top-right-button {
             position: absolute;
             top: 20px;
@@ -90,7 +90,7 @@
 
         .top-right-button button {
             padding: 10px 20px;
-            background-color: #007bff; /* Color de fondo azul */
+            background-color: #007bff; 
             color: black;
             border: none;
             border-radius: 5px;
@@ -99,18 +99,18 @@
         }
 
         .top-right-button button:hover {
-            background-color: #0056b3; /* Color de fondo al pasar el mouse */
+            background-color: #0056b3; 
             transition: background-color 0.3s;
         }
     </style>
 </head>
 <body>
-    <!-- Botón "Inicia Sesión" en la parte superior derecha -->
+    
     <div class="top-right-button">
        ¿Ya tienes una cuenta? <button onclick="window.location.href='{{ route('control.login') }}'">Inicia Sesión</button>
     </div>
 
-    <!-- Contenedor principal -->
+   
     <div class="container">
         <img src="images/logo4.png" alt="Logo OCNAgua" class="logo">
         <h1>Bienvenido a OCNAgua</h1>

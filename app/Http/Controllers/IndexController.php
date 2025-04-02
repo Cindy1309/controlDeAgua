@@ -11,17 +11,13 @@ class IndexController extends Controller
     /**
      * Muestra el índice con las casas registradas para el usuario autenticado.
      */
-    public function index()
-    {
-        // Obtener el usuario autenticado
-        $user = auth()->user();
+   public function index()
+{
+    $user = auth()->user();
+    $casas = $user->casas;
 
-        // Obtener las casas asociadas al usuario desde el subdocumento 'casas'
-        $casas = $user->casas;
-
-        // Pasar las casas a la vista
-        return view('control.index', compact('casas'));
-    }
+    return view('control.index', compact('casas'));
+}
 
     /**
      * Edita una casa del usuario autenticado.
@@ -30,18 +26,19 @@ class IndexController extends Controller
     {
         // Obtener el usuario autenticado
         $user = auth()->user();
-
-        // Buscar la casa en el subdocumento 'casas' del usuario
-        $casa = $user->casas()->where('_id', $id)->first();
-
+    
+        // Buscar la casa dentro del array 'casas' del usuario
+        $casa = collect($user->casas)->firstWhere('_id', new \MongoDB\BSON\ObjectId($id));
+    
         // Verificar si se encontró la casa
         if (!$casa) {
             return redirect()->route('index')->with('error', 'Casa no encontrada');
         }
-
+    
         // Pasar la casa a la vista de edición
         return view('control.editarCasa', compact('casa'));
     }
+    
 
     /**
      * Actualiza los datos de una casa.
@@ -84,21 +81,21 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        // Obtener el usuario autenticado
+        
         $user = auth()->user();
 
-        // Buscar la casa en el subdocumento 'casas' del usuario
+        
         $casa = $user->casas()->where('_id', $id)->first();
 
-        // Verificar si se encontró la casa
+       
         if (!$casa) {
             return redirect()->route('index')->with('error', 'Casa no encontrada');
         }
 
-        // Eliminar la casa
+       
         $casa->delete();
 
-        // Redirigir con mensaje de éxito
+       
         return redirect()->route('index')->with('success', 'Casa eliminada con éxito.');
     }
 }

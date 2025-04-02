@@ -83,47 +83,47 @@
             background: linear-gradient(135deg, #c53030, #a61d1d);
             transform: scale(1.05);
         }
-         /* Estilos del botón de Cerrar Sesión */
+         
          .btn-logout {
-            background: #e53e3e; /* Rojo */
-            border-radius: 50px; /* Redondear el botón */
+            background: #e53e3e; 
+            border-radius: 50px; 
             padding: 10px 20px;
             position: absolute;
-            top: 20px; /* Ajustar la distancia desde el borde superior */
-            right: 20px; /* Ajustar la distancia desde el borde derecho */
+            top: 20px; 
+            right: 20px; 
             font-size: 14px;
             transition: background-color 0.3s ease;
         }
 
         .btn-logout:hover {
-            background: #c53030; /* Rojo más oscuro en el hover */
+            background: #c53030; 
         }
-     /* Estilo para el botón redondeado y azul */
+     
 .btn-redirect {
-    padding: 12px 25px; /* Ajustar el tamaño del botón */
-    background-color: #007BFF; /* Azul más atractivo */
+    padding: 12px 25px; 
+    background-color: #007BFF; 
     color: white;
-    border-radius: 25px; /* Redondeo del botón */
+    border-radius: 25px; 
     font-weight: bold;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.2s;
     border: none;
     cursor: pointer;
-    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    font-size: 16px; 
 }
 
 .btn-redirect:hover {
-    background-color: #0056b3; /* Azul más oscuro en hover */
-    transform: scale(1.05); /* Aumenta el tamaño un poco al pasar el cursor */
+    background-color: #0056b3; 
+    transform: scale(1.05); 
 }
     </style>
 </head>
 <body>
-    <!-- Vista donde quieres agregar el botón, por ejemplo adminUsuarios.blade.php -->
+    
 <form action="{{ route('suministros.datos') }}" method="GET" style="position: absolute; top: 20px; left: 20px;">
     <button type="submit" class="btn btn-redirect">Suministro</button>
 </form>
-       <!-- Botón de Cerrar Sesión en la esquina superior derecha -->
+      
     <form action="{{ route('control.logout') }}" method="POST" style="margin-top: 20px;">
         @csrf
         <button type="submit" class="btn btn-logout">Cerrar Sesión</button>

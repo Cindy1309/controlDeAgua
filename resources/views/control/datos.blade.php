@@ -48,14 +48,14 @@
             color: white;
         }
         table td {
-            color: black; /* Cambié el color del texto a negro */
+            color: black; 
         }
 
-        /* Estilo del botón fuera del contenedor */
+        
         .boton-regresar {
             position: absolute;
-            top: 20px; /* Ajusta la posición vertical */
-            left: 20px; /* Ajusta la posición horizontal */
+            top: 20px; 
+            left: 20px; 
             padding: 16px 30px;
             background-color: #007bff;
             color: white;
@@ -77,7 +77,7 @@
 </head>
 <body>
 
-    <!-- Botón que redirige a la vista "botonAdmin" fuera del contenedor -->
+    
     <a href="{{ route('botonAdmin') }}">
         <button class="boton-regresar">Suministro</button>
     </a>
@@ -85,7 +85,7 @@
     <div class="container">
         <h1>Datos de Suministros</h1>
         
-        <!-- Tabla que muestra los suministros -->
+        
         <table>
             <thead>
                 <tr>
